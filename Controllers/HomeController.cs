@@ -13,20 +13,27 @@ namespace Image_upload.Controllers
             _logger = logger;
         }
 
+        imageFileContext db = new imageFileContext();
+
+        public JsonResult Add (Profile model) 
+        {
+            //Retrive the image 
+            var file = Request.Form.Files[0];
+
+            if (file != null && file.Length>0)
+
+            {
+                var fileName = Path.GetFileName(file.FileName);
+                var filePath= Path.Combine(Directory.GetCurrentDirectory(),);
+            }
+        }
         public IActionResult Index()
         {
             return View();
         }
 
-        public IActionResult Privacy()
-        {
-            return View();
-        }
+       
 
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-        }
+        
     }
 }
